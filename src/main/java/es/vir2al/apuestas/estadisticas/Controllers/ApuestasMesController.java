@@ -12,7 +12,7 @@ import es.vir2al.apuestas.estadisticas.services.EstadisticasApuestaMesService;
 /**
  * ApuestasMesController
  */
-@CrossOrigin(origins = { "http://localhost:4200", "*" })
+@CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping("/api/apuestas/mes")
 public class ApuestasMesController {

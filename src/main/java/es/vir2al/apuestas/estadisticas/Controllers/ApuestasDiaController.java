@@ -19,7 +19,7 @@ import es.vir2al.apuestas.estadisticas.dtos.EstadisticaApuestaDiaDTO;
 import es.vir2al.apuestas.estadisticas.dtos.Request.FechasRequest;
 import es.vir2al.apuestas.estadisticas.services.EstadisticasApuestaDiaService;
 
-@CrossOrigin(origins = { "http://localhost:4200", "*" })
+@CrossOrigin(origins = {"*" })
 @RestController
 @RequestMapping("/api/apuestas/dia")
 public class ApuestasDiaController {
