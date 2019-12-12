@@ -15,8 +15,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  * Representa una apuesta
@@ -36,43 +34,33 @@ public class Apuesta implements Serializable{
 	@Temporal(TemporalType.DATE)
   private Date fechaAlta;
 
-  @NotNull(message="La fecha de evento no puede estar vacía")
 	@Column(name="fecha_evento")
 	@Temporal(TemporalType.DATE)
   private Date fechaEvento;
 
-  @NotNull(message="La apuesta debe estar asociada a una casa de apuestas")
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="casa_id")
   private Casa casa;
   
-  @NotNull(message="La apuesta debe estar asociada a un torneo")
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="torneo_id")
   private Torneo torneo;
-  
-  @NotNull(message="La apuesta debe estar asociada a un tipo de apuestas")
+
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="tipo_id")
   private Tipo tipo;
   
-  @NotNull(message="La apuesta debe estar asociada a un tipster")
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="tipster_id")
   private Tipster tipster;
-  
-  @NotNull(message="La apuesta debe estar asociada a un estado")
+
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="estado_id")
   private Estado estado;
   
-  @NotNull
-  @Size(min=4, max=128)
   @Column(name="descripcion",nullable = false,unique = false)
   private String descripcion;
 
-  @NotNull
-  @Size(min=2, max=64)
   @Column(name="apuesta",nullable = false,unique = false)
   private String apuesta;
 
