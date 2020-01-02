@@ -14,8 +14,10 @@ import es.vir2al.apuestas.estadisticas.Utiles.Utiles;
 import es.vir2al.apuestas.estadisticas.dtos.EstadisticaApuestaDiaDTO;
 import es.vir2al.apuestas.estadisticas.models.EstadisticaApuestaDia;
 import es.vir2al.apuestas.estadisticas.models.legacy.Apuesta;
+import es.vir2al.apuestas.estadisticas.models.legacy.ApuestaVirtual;
 import es.vir2al.apuestas.estadisticas.repository.ApuestasDiaDAO;
 import es.vir2al.apuestas.estadisticas.repository.legacy.ApuestasDAO;
+import es.vir2al.apuestas.estadisticas.repository.legacy.ApuestasVirtualDAO;
 
 /**
  * EstadisticasApuestaDiaServiceImpl
@@ -27,7 +29,7 @@ public class EstadisticasApuestaDiaServiceImpl implements EstadisticasApuestaDia
   private ApuestasDiaDAO apuestasDiaDAO;
 
   @Autowired 
-  private ApuestasDAO apuestasDAO;
+  private ApuestasVirtualDAO apuestasVirtualDAO;
 
   @Override
   @Transactional(readOnly = true)
@@ -120,7 +122,7 @@ public class EstadisticasApuestaDiaServiceImpl implements EstadisticasApuestaDia
     Float potencial;
 
     // necesitamos obtener las apuestas del día
-    List<Apuesta> lstApuestasDia = this.apuestasDAO.findByFechaEvento(dia);
+    List<ApuestaVirtual> lstApuestasDia = this.apuestasVirtualDAO.findByFechaEvento(dia);
 
     EstadisticaApuestaDia estadisticas = new EstadisticaApuestaDia();
     estadisticas = this.apuestasDiaDAO.findByFecha(dia);
@@ -131,7 +133,7 @@ public class EstadisticasApuestaDiaServiceImpl implements EstadisticasApuestaDia
       estadisticas.reset();
     }
 
-    for (Apuesta apuesta : lstApuestasDia) {
+    for (ApuestaVirtual apuesta : lstApuestasDia) {
       
       potencial = 0f;
 
