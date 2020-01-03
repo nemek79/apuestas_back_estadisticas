@@ -13,10 +13,8 @@ import es.vir2al.apuestas.estadisticas.Constants.ConstApp;
 import es.vir2al.apuestas.estadisticas.Utiles.Utiles;
 import es.vir2al.apuestas.estadisticas.dtos.EstadisticaApuestaDiaDTO;
 import es.vir2al.apuestas.estadisticas.models.EstadisticaApuestaDia;
-import es.vir2al.apuestas.estadisticas.models.legacy.Apuesta;
 import es.vir2al.apuestas.estadisticas.models.legacy.ApuestaVirtual;
 import es.vir2al.apuestas.estadisticas.repository.ApuestasDiaDAO;
-import es.vir2al.apuestas.estadisticas.repository.legacy.ApuestasDAO;
 import es.vir2al.apuestas.estadisticas.repository.legacy.ApuestasVirtualDAO;
 
 /**
