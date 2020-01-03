@@ -1,5 +1,7 @@
 package es.vir2al.apuestas.estadisticas.Controllers;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,6 +31,24 @@ public class ApuestasMesController {
 
     try {
       this.estadisticasApuestaMesSRV.executeByAno(2019);
+    } catch (Exception e) {
+
+      e.printStackTrace();
+    }
+
+    return null;
+  }
+
+  @PostMapping("/actual")
+  public ResponseEntity<?> executeByMesActual() {
+
+    // Obtener mes y año actuales
+    Calendar fecha = Calendar.getInstance();
+    int mes = fecha.get(Calendar.MONTH) + 1;
+    int ano = fecha.get(Calendar.YEAR);
+
+    try {
+      this.estadisticasApuestaMesSRV.executeByMes(mes, ano);
     } catch (Exception e) {
 
       e.printStackTrace();

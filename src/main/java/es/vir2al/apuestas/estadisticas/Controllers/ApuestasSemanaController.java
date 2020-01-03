@@ -1,5 +1,7 @@
 package es.vir2al.apuestas.estadisticas.Controllers;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,7 +30,6 @@ public class ApuestasSemanaController {
   public ResponseEntity<?> execute() {
 
     try {
-
       this.estadisticasSemanaSRV.executeBySemanas(1, 50, 2019);
     } catch (Exception e) { 
 
@@ -38,4 +39,24 @@ public class ApuestasSemanaController {
     return null;
 
   }
+
+  @PostMapping("/actual")
+  public ResponseEntity<?> executeSemanaActual() {
+
+    // obtener el numero de la semana
+    Calendar calendar = Calendar.getInstance();
+    int numberWeekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+    int ano = calendar.get(Calendar.YEAR);
+
+    try {
+      this.estadisticasSemanaSRV.executeBySemana(numberWeekOfYear,ano);
+    } catch (Exception e) { 
+
+      e.printStackTrace();
+    }
+
+    return null;
+
+  }
+
 }
